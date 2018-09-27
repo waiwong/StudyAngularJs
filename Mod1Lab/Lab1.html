@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html ng-app="lab1App">
+
+<head>
+    <title>Angular Fundamentals Lab1</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="libs/angular.min.js"></script>
+    <script>
+        var lab1App = angular.module('lab1App', []);
+        lab1App.controller('lab1Ctrl', [
+            '$scope', 'myConfig',
+            function ($scope, myConfig) {
+                $scope.appName = myConfig.applicationName;
+                $scope.currentTime = new Date();
+            }
+        ]);
+
+        lab1App.constant('myConfig', { applicationName: 'My Angular JS App' });
+    </script>
+</head>
+
+<body ng-controller="lab1Ctrl">
+    <div class="container">
+        <h1>Module 1 homework</h1>
+        <pre>The Current Date is:{{currentTime}}</pre>
+    </div>
+</body>
+</html>

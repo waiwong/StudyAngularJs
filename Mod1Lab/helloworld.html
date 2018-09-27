@@ -8,14 +8,23 @@
     <script src="libs/angular.min.js"></script>
     <script>
         var helloWorldApp = angular.module('helloWorldApp', []);
-        helloWorldApp.controller('firstController', []);
+        helloWorldApp.controller('firstController', [
+            '$scope', 'myConfig',
+            function ($scope, myConfig) {
+                $scope.appName = myConfig.applicationName;
+            }
+        ]);
+
+        helloWorldApp.constant('myConfig', { applicationName: 'My Angular JS App' });
     </script>
 </head>
 
-<body>
+<body ng-controller="firstController">
     <div class="container">
         <h1>AngularFundamentals</h1>
         <h2>{{'Hello from AngularJS'}}</h2>
+        <pre>{{appName}}</pre>
     </div>
 </body>
+
 </html>
